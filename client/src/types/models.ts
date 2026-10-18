@@ -40,6 +40,10 @@ export interface Project {
   updatedAt: string;
 }
 
+export type ProjectCreatePayload = Pick<Project, "name" | "description">;
+
+export type ProjectUpdatePayload = Partial<ProjectCreatePayload>;
+
 export interface Task {
   _id: string;
   organizationId: string;
@@ -53,6 +57,19 @@ export interface Task {
   createdAt: string;
   updatedAt: string;
 }
+
+export type TaskCreatePayload = Pick<
+  Task,
+  | "projectId"
+  | "title"
+  | "description"
+  | "status"
+  | "priority"
+  | "assignedTo"
+  | "dueDate"
+>;
+
+export type TaskUpdatePayload = Partial<TaskCreatePayload>;
 
 export interface Booking {
   _id: string;
