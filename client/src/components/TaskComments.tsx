@@ -170,7 +170,7 @@ export const TaskComments = ({
             />
             <button
               className="rounded-[10px] bg-ink px-4 py-2 text-sm font-medium text-white transition hover:opacity-80 active:opacity-70 disabled:cursor-not-allowed disabled:opacity-50"
-              disabled={!newComment.trim() || isCreating}
+              disabled={!hasLoaded || !newComment.trim() || isCreating}
               type="submit"
             >
               {isCreating ? "Adding..." : "Add comment"}
