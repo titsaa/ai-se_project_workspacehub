@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { PageHeader } from "../components/PageHeader";
 import { StatusPanel } from "../components/StatusPanel";
@@ -23,8 +23,9 @@ export const ProjectsPage = () => {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
 
-  const projectsWithTaskCounts: ProjectWithTaskCount[] = projects.map(
-    (project) => buildProjectWithTaskCount(project, tasks),
+  const projectsWithTaskCounts: ProjectWithTaskCount[] = useMemo(
+    () => projects.map((project) => buildProjectWithTaskCount(project, tasks)),
+    [projects, tasks],
   );
 
   const loadProjects = async () => {
