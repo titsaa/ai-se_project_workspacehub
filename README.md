@@ -78,6 +78,18 @@ npm run dev:server
 npm run dev:client
 ```
 
+## Environment Variables
+
+| Variable        | Used by | Required | Description                                                                                                                      |
+| --------------- | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `PORT`          | server  | No       | Port for the local API server. Defaults to `5001`. Not needed on Vercel.                                                         |
+| `MONGODB_URI`   | server  | Yes      | MongoDB connection string: a local instance in development, MongoDB Atlas in production.                                         |
+| `JWT_SECRET`    | server  | Yes      | Secret used to sign and verify login tokens. Use a long random value in production.                                              |
+| `CLIENT_ORIGIN` | server  | Yes      | The frontend's origin allowed by CORS, with no trailing slash.                                                                   |
+| `VITE_API_URL`  | client  | No       | Base URL of the API, without `/api`. Defaults to `http://localhost:5001`. Baked in at build time, so redeploy after changing it. |
+
+In production, these values are set in each Vercel project's environment variables, never committed to the repository.
+
 ## Demo Users
 
 The seed script creates one organization with these users:
